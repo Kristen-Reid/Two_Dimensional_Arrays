@@ -151,28 +151,75 @@
 7. Return twoArr
 */
 
-const zip = (arr1, arr2) => {
-  let twoArr = [];
+// const zip = (arr1, arr2) => {
+//   let twoArr = [];
 
-  for (let i = 0; i < arr1.length; i++){
-    for (let j = i; j < arr2.length; j++){
+//   for (let i = 0; i < arr1.length; i++){
+//     for (let j = i; j < arr2.length; j++){
 
-      let subArr = [];
+//       let subArr = [];
 
-      if (i === j) {
-        subArr.push(arr1[i], arr2[j]);
-        twoArr.push(subArr);
-      }
-    }
-  }
-  return twoArr;
-};
+//       if (i === j) {
+//         subArr.push(arr1[i], arr2[j]);
+//         twoArr.push(subArr);
+//       }
+//     }
+//   }
+//   return twoArr;
+// };
 
-console.log(zip([1, 2, 3, 4], ['eins', 'zwei', 'drei', 'vier']));
-// [ [ 1, 'eins' ], [ 2, 'zwei' ], [ 3, 'drei' ], [ 4, 'vier' ] ]
+// console.log(zip([1, 2, 3, 4], ['eins', 'zwei', 'drei', 'vier']));
+// // [ [ 1, 'eins' ], [ 2, 'zwei' ], [ 3, 'drei' ], [ 4, 'vier' ] ]
 
-console.log(zip(['eins', 'zwei', 'drei'], [1, 2, 3]));
-// [ [ 'eins', 1 ], [ 'zwei', 2 ], [ 'drei', 3 ] ]
+// console.log(zip(['eins', 'zwei', 'drei'], [1, 2, 3]));
+// // [ [ 'eins', 1 ], [ 'zwei', 2 ], [ 'drei', 3 ] ]
 
-console.log(zip(['alef', 'bet'], ['alpha', 'beta']));
-// [ [ 'alef', 'alpha' ], [ 'bet', 'beta' ] ]
+// console.log(zip(['alef', 'bet'], ['alpha', 'beta']));
+// // [ [ 'alef', 'alpha' ], [ 'bet', 'beta' ] ]
+
+
+/*
+1. zanyZapped empty array variable
+2. If arr1 length is greater than arr2 length:
+   - Set arr2 to arr1's length
+   - Else set arr1's length to arr2
+3. Iterate through arr1 starting i at 0 index and stopping at arr1 length or arr2 length
+4. Iterate through arr2 starting j at 0 index and stopping at arr2 length or arr1 length
+** 5. If j and i index are the same push [arr1[i], arr2[j]] into zanyZapped array
+** 6. If arr1[i] or arr2[j] equals undefined set them to null
+7. Return zanyZapped array
+*/
+
+// const zanyZip = (arr1, arr2) => {
+//   let zanyZapped = [];
+
+  // if (arr1.length > arr2.length) {
+  //   arr2.length = arr1.length;
+  // } else {
+  //   arr1.length = arr2.length;
+  // }
+
+//   for (let i = 0; i < arr1.length || i < arr2.length; i++) {
+//     for (let j = 0; j < arr2.length || j < arr1.length; j++) {
+
+//       if (i === j) {
+//         zanyZapped.push([arr1[i], arr2[j]]);
+//       }
+
+//       if (arr1[i] === undefined || arr2[j] === undefined) {
+//         arr1[i] = null;
+//         arr2[j] = null;
+//       }
+//     }
+//   }
+//   return zanyZapped;
+// };
+
+// console.log(zanyZip([1, 2], ['eins', 'zwei', 'drei', 'vier']));
+// // [ [ 1, 'eins' ], [ 2, 'zwei' ], [ null, 'drei' ], [ null, 'vier' ] ]
+
+// console.log(zanyZip([1, 2, 3, 4], ['eins', 'zwei', 'drei']));
+// // [ [ 1, 'eins' ], [ 2, 'zwei' ], [ 3, 'drei' ], [ 4, null ] ]
+
+// console.log(zanyZip(['alef', 'bet'], ['alpha', 'beta']));
+// // [ [ 'alef', 'alpha' ], [ 'bet', 'beta' ] ]
