@@ -124,7 +124,7 @@ const maxColumn = matrix => {
       let num = matrix[j][i];
 
       if (num > largestNum) {
-        columns.splice(i);
+        columns.splice(i,1);
         largestNum = num;
         columns.push(largestNum);
       }
