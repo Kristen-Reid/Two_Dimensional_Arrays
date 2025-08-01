@@ -58,3 +58,39 @@
 //     [2]
 // ];
 // console.log(twoDimensionalProduct(arr2)); // 88
+
+
+/*
+1. largestNum variable set to 0
+2. Iterate through matrix starting: i index 0 - less than matrix length
+3. SubMatrix variable assigned matrix[i] elements
+4. Iterate through subAmatrix: j index 0 - less than subMatrix length
+5. Nums variable assigned subMatirx[j] elements
+6. If num is greater than largestNum, set largestNum to num
+7. Return largestNum
+*/
+
+// const maxInMatrix = (matrix) => {
+//   let largestNum = 0;
+
+//   for (let i = 0; i < matrix.length; i++) {
+//     let subMatrix = matrix[i];
+
+//     for (let j = 0; j < subMatrix.length; j++) {
+//       let num = subMatrix[j];
+
+//       if (num > largestNum) {
+//         largestNum = num;
+//       }
+//     }
+//   }
+//   return largestNum;
+// };
+
+// let matrix = [
+//   [11, 2, -99],
+//   [20, 19, 10],
+//   [47, 72, 56]
+// ];
+
+// console.log(maxInMatrix(matrix)); // 72
