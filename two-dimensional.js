@@ -113,29 +113,66 @@
 10. Return columns array
 */
 
-const maxColumn = matrix => {
-  let largestNum = 0;
-  let columns = [];
+// const maxColumn = matrix => {
+//   let largestNum = 0;
+//   let columns = [];
 
-  for (let i = 0; i < matrix.length; i++) {
-    let subMatrix = matrix[i];
-    for (let j = 0; j < subMatrix.length; j++){
+//   for (let i = 0; i < matrix.length; i++) {
+//     let subMatrix = matrix[i];
+//     for (let j = 0; j < subMatrix.length; j++){
 
-      let num = matrix[j][i];
+//       let num = matrix[j][i];
 
-      if (num > largestNum) {
-        columns.splice(i,1);
-        largestNum = num;
-        columns.push(largestNum);
+//       if (num > largestNum) {
+//         columns.splice(i,1);
+//         largestNum = num;
+//         columns.push(largestNum);
+//       }
+//     }
+//   }
+//   return columns;
+// };
+
+// let matrix = [
+//               [5, 9, 21],
+//               [9, 19, 6],
+//               [12,14,15]
+// ];
+// console.log(maxColumn(matrix)); // [12, 19, 21]
+
+
+/*
+1. twoArr empty array variable
+2. Iterate through arr1 starting i at 0 stopping iteration less than arr1's length
+3. Iterate through arr2 starting j at i stopping iteration less than arr2's length
+4. subArr empty array variable
+5. If i = j, push arr[i] and arr[j] into subArr
+6. Push subArr into twoArr
+7. Return twoArr
+*/
+
+const zip = (arr1, arr2) => {
+  let twoArr = [];
+
+  for (let i = 0; i < arr1.length; i++){
+    for (let j = i; j < arr2.length; j++){
+
+      let subArr = [];
+
+      if (i === j) {
+        subArr.push(arr1[i], arr2[j]);
+        twoArr.push(subArr);
       }
     }
   }
-  return columns;
+  return twoArr;
 };
 
-let matrix = [
-              [5, 9, 21],
-              [9, 19, 6],
-              [12,14,15]
-];
-console.log(maxColumn(matrix)); // [12, 19, 21]
+console.log(zip([1, 2, 3, 4], ['eins', 'zwei', 'drei', 'vier']));
+// [ [ 1, 'eins' ], [ 2, 'zwei' ], [ 3, 'drei' ], [ 4, 'vier' ] ]
+
+console.log(zip(['eins', 'zwei', 'drei'], [1, 2, 3]));
+// [ [ 'eins', 1 ], [ 'zwei', 2 ], [ 'drei', 3 ] ]
+
+console.log(zip(['alef', 'bet'], ['alpha', 'beta']));
+// [ [ 'alef', 'alpha' ], [ 'bet', 'beta' ] ]
