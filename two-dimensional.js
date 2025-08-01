@@ -94,3 +94,48 @@
 // ];
 
 // console.log(maxInMatrix(matrix)); // 72
+
+
+/*
+1. largestNum variable set to 0
+2. columns empty array
+3. Iterate through less than matrix length from i index 0
+4. subMatrix variable set to matrix elements
+5. Iterate through less than subMatrix length from j index 0
+6. num variable set to matrix row(j) and matrix column (i): matrix[j][i]
+   - Setting row[j] and column[i] keeps you in one column at a time and iterating through each row
+     For ex: while the outer loop is still in its loop at the 0 index the inner loop runs through
+     the column row by row through all of its loops (r[0]c[0], r[1]c[0], r[2]c[0]...)
+7. If num is great than largestNum:
+   - Splice smaller num from columns array
+   - Set largestNum from smaller num to larger num
+   - Push largestNum into columns array
+10. Return columns array
+*/
+
+const maxColumn = matrix => {
+  let largestNum = 0;
+  let columns = [];
+
+  for (let i = 0; i < matrix.length; i++) {
+    let subMatrix = matrix[i];
+    for (let j = 0; j < subMatrix.length; j++){
+
+      let num = matrix[j][i];
+
+      if (num > largestNum) {
+        columns.splice(i);
+        largestNum = num;
+        columns.push(largestNum);
+      }
+    }
+  }
+  return columns;
+};
+
+let matrix = [
+              [5, 9, 21],
+              [9, 19, 6],
+              [12,14,15]
+];
+console.log(maxColumn(matrix)); // [12, 19, 21]
