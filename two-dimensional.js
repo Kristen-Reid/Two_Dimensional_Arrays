@@ -223,3 +223,55 @@
 
 // console.log(zanyZip(['alef', 'bet'], ['alpha', 'beta']));
 // // [ [ 'alef', 'alpha' ], [ 'bet', 'beta' ] ]
+
+
+/*
+1. Initialize empty matrixArr varibale
+2. Iterate through matrix1 starting i at 0 index - less than length
+3. Initialize subMatrix varibale set to matrix1[i]
+4. Iterate through subMatrix starting j at 0 - less than length
+5. Intialize variables sum1 and sum2
+6. Initialize empty arr varibale
+7. sum = matrix1[i][j] + matrix2[i][j]
+8.
+9.
+10. Return matrixArr
+*/
+
+
+const matrixAddition = (matrix1, matrix2) => {
+  let matrixArr = [];
+  let sum = 0;
+  let arr = []
+
+  for (let i = 0; i < matrix1.length; i++) {
+    let subMatrix = matrix1[i];
+
+    for (let j = 0; j < subMatrix.length; j++) {
+      console.log(j);
+
+      sum = matrix1[i][j] + matrix2[i][j];
+
+
+      if (arr.length < subMatrix.length) {
+        console.log(sum)
+
+      }
+
+
+    }
+    matrixArr.push(arr);
+  }
+  return matrixArr;
+};
+
+// let matrixA = [[2,5], [4,7]]
+// let matrixB = [[9,1], [3,0]]
+// let matrixC = [[-1,0], [0,-1]]
+let matrixD = [[2, -5], [7, 10], [0, 1]]
+let matrixE = [[0 , 0], [12, 4], [6,  3]]
+
+// console.log(matrixAddition(matrixA, matrixB)); // [[11, 6], [7, 7]]
+// console.log(matrixAddition(matrixA, matrixC)); // [[1, 5], [4, 6]]
+// console.log(matrixAddition(matrixB, matrixC)); // [[8, 1], [3, -1]]
+console.log(matrixAddition(matrixD, matrixE)); // [[2, -5], [19, 14], [6, 4]]
