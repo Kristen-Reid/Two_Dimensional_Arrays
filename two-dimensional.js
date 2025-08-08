@@ -233,7 +233,7 @@
 5. Iterate through subMatrix starting j at 0 - less than length
    ** subMatrix[j] = matrix1[row][col]; can be used to get matrix2[row][col]
       value as well
-6. Initialize sum vairiable: sum = matrix1[i][j] + matrix2[i][j]
+6. Initialize sum variable: sum = matrix1[i][j] + matrix2[i][j]
    ** matrix1[row][col] + matrix2[row][col] **
 7. Push sum into arr from inner loop
 8. Push arr into matrixArr matrix array from outer loop
@@ -241,29 +241,82 @@
 */
 
 
-const matrixAddition = (matrix1, matrix2) => {
-  let matrixArr = [];
+// const matrixAddition = (matrix1, matrix2) => {
+//   let matrixArr = [];
 
-  for (let i = 0; i < matrix1.length; i++) {
-    let subMatrix = matrix1[i];
-    let arr = [];
+//   for (let i = 0; i < matrix1.length; i++) {
+//     let subMatrix = matrix1[i];
+//     let arr = [];
 
-    for (let j = 0; j < subMatrix.length; j++) {
-      let sum = matrix1[i][j] + matrix2[i][j];
-      arr.push(sum);
+//     for (let j = 0; j < subMatrix.length; j++) {
+//       let sum = matrix1[i][j] + matrix2[i][j];
+//       arr.push(sum);
+//     }
+//     matrixArr.push(arr);
+//   }
+//   return matrixArr;
+// };
+
+// let matrixA = [[2,5], [4,7]]
+// let matrixB = [[9,1], [3,0]]
+// let matrixC = [[-1,0], [0,-1]]
+// let matrixD = [[2, -5], [7, 10], [0, 1]]
+// let matrixE = [[0 , 0], [12, 4], [6,  3]]
+
+// console.log(matrixAddition(matrixA, matrixB)); // [[11, 6], [7, 7]]
+// console.log(matrixAddition(matrixA, matrixC)); // [[1, 5], [4, 6]]
+// console.log(matrixAddition(matrixB, matrixC)); // [[8, 1], [3, -1]]
+// console.log(matrixAddition(matrixD, matrixE)); // [[2, -5], [19, 14], [6, 4]]
+
+
+/*
+1. Empty array varibale luckyMatrix
+2. Iterate through matrix starting row at 0 index - less than length
+3. Declare variables min and max set to 0
+4. subMatrix variable for index vales of matrix
+5. Iterate through subMatrix starting col at 0 index - less than length
+6. Use tenary to find min val for row (matrix[row][col])and max val for col (matrix[col][row])
+   - min will equal if val is the min num in that row
+   - max will equal if val is the max num in that col
+   - min and max have to be the same index
+7. If min num equals max num push the value into luckyMatrix array (outer loop)
+8. Return luckyMatrix
+*/
+
+const luckyNumbers = (matrix) => {
+  let luckyMatrix = [];
+
+  for (let row = 0; row < matrix.length; row++) {
+    let min = 0;
+    let max = 0;
+    let subMatrix = matrix[row];
+
+    for (let col = 0; col < subMatrix.length; col++) {
+      console.log(matrix[row][col]);
+      // console.log(matrix[col][row]);
+
+      min = min < matrix[row][col] ? min = matrix[row][col] : min;
+      console.log(min);
+      // max = matrix[col][row] > max ? max = matrix[col][row] : max;
+      // console.log(max)
     }
-    matrixArr.push(arr);
+    // if (min === max) luckyMatrix[max];
   }
-  return matrixArr;
+  return luckyMatrix;
 };
 
-let matrixA = [[2,5], [4,7]]
-let matrixB = [[9,1], [3,0]]
-let matrixC = [[-1,0], [0,-1]]
-let matrixD = [[2, -5], [7, 10], [0, 1]]
-let matrixE = [[0 , 0], [12, 4], [6,  3]]
+let matrix1 = [
+  [5, 9, 21],
+  [9, 19, 6],
+  [12, 14, 15]
+];
 
-console.log(matrixAddition(matrixA, matrixB)); // [[11, 6], [7, 7]]
-console.log(matrixAddition(matrixA, matrixC)); // [[1, 5], [4, 6]]
-console.log(matrixAddition(matrixB, matrixC)); // [[8, 1], [3, -1]]
-console.log(matrixAddition(matrixD, matrixE)); // [[2, -5], [19, 14], [6, 4]]
+console.log(luckyNumbers(matrix1)); // [12]
+
+// let matrix2 = [
+//   [5, 10, 8, 6],
+//   [10, 2, 7, 9],
+//   [21, 15, 19, 10]
+// ];
+
+// console.log(luckyNumbers(matrix2)); // [10]
