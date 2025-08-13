@@ -284,39 +284,50 @@
 */
 
 const luckyNumbers = (matrix) => {
-  let luckyMatrix = [];
+  let luckyMatrix;
+  let luckyNums = [];
 
-  for (let row = 0; row < matrix.length; row++) {
-    let min = 0;
+  let longCol = matrix[0].length
+  console.log(longCol)
+  let longRow = matrix.length;
+  console.log(longRow)
+
+  for (let col = 0; col < longCol; col++) {
+    let subMatrix = matrix[col];
+    let min = longCol[col - col];
+    // console.log(min)
     let max = 0;
-    let subMatrix = matrix[row];
 
-    for (let col = 0; col < subMatrix.length; col++) {
+    for (let row = 0; row < longRow; row++) {
       console.log(matrix[row][col]);
-      // console.log(matrix[col][row]);
+      // console.log(subMatrix[col]=longRow)
 
-      min = min < matrix[row][col] ? min = matrix[row][col] : min;
-      console.log(min);
-      // max = matrix[col][row] > max ? max = matrix[col][row] : max;
-      // console.log(max)
+
+      min = min < matrix[col] ? min : (min = matrix[col]);
+      max = matrix[row][col] > max ? (max = matrix[row][col]) : max;
     }
-    // if (min === max) luckyMatrix[max];
+    console.log(min);
+    console.log(max);
+    // luckyNums.push(min, max);
+    // luckyMatrix = luckyNums.filter((num, index, array) => {
+    //   return array.indexOf(num) !== index
+    // })
   }
   return luckyMatrix;
 };
 
-let matrix1 = [
-  [5, 9, 21],
-  [9, 19, 6],
-  [12, 14, 15]
+let matrix2 = [
+  [5, 10, 8, 6],
+  [10, 2, 7, 9],
+  [21, 15, 19, 10]
 ];
 
-console.log(luckyNumbers(matrix1)); // [12]
+console.log(luckyNumbers(matrix2)); // [10]
 
-// let matrix2 = [
-//   [5, 10, 8, 6],
-//   [10, 2, 7, 9],
-//   [21, 15, 19, 10]
+// let matrix1 = [
+//   [5, 9, 21],
+//   [9, 19, 6],
+//   [12, 14, 15]
 // ];
 
-// console.log(luckyNumbers(matrix2)); // [10]
+// console.log(luckyNumbers(matrix1)); // [12]
