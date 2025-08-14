@@ -270,51 +270,61 @@
 
 
 /*
-1. Empty array varibale luckyMatrix
-2. Iterate through matrix starting row at 0 index - less than length
-3. Declare variables min and max set to 0
-4. subMatrix variable for index vales of matrix
-5. Iterate through subMatrix starting col at 0 index - less than length
-6. Use tenary to find min val for row (matrix[row][col])and max val for col (matrix[col][row])
-   - min will equal if val is the min num in that row
-   - max will equal if val is the max num in that col
-   - min and max have to be the same index
-7. If min num equals max num push the value into luckyMatrix array (outer loop)
-8. Return luckyMatrix
+1. Initialize varibale luckyMatrix with no value
+2. Empty array variable luckyNums
+3. Variables longRow set to matrix.length and longCol set to matrix[0].length
+   - longRow is to access correct amount of rows for standard matrix format
+   - longCol is to access length of rows to set length of cols just in case column count
+     isn't the same as the row count
+4. First nested loop is to access values in rows to find the min (matrix[row][col])
+   - Iterate through matrix starting row at 0 through less than longRow
+   - Initialize min variable with no value
+   - Iterate through inner loop at longCol length to access columns
+   - min ternary to set min value to smallest number per row
+   - Within outer loop push min values (amount should equal row length) into luckyNums array
+5. Second nested loop is to access values in columns to find max (matrix[col][row])
+   - Iterate through matrix starting col at 0 through less than longCol
+    ** longCol is set to the length of the row arrays
+   - Intialize max variable and set it to 0
+   - Iterate through inner loop set to longRow length
+   - max ternary to set max to biggest number in each column
+   - Within outer loop push max numbers into luckyNums array
+6. Outside of both nested loops set luckyMatrix variable to equal the filtered luckyNums
+   array to get the number that appears twice (as the min and max value in the same row and col)
+7. Return luckyMatrix
 */
 
-const luckyNumbers = (matrix) => {
+const luckyNumbers = matrix => {
   let luckyMatrix;
   let luckyNums = [];
 
-  let longCol = matrix[0].length
-  console.log(longCol)
-  let longRow = matrix.length;
-  console.log(longRow)
+  let luckyRow = matrix.length;
+  let luckyCol = matrix[0].length;
 
-  for (let col = 0; col < longCol; col++) {
-    let subMatrix = matrix[col];
-    let min = longCol[col - col];
-    // console.log(min)
+  for (let row = 0; row < luckyRow; row++) {
+    let min;
+
+    for (let col = 0; col < luckyCol; col++) {
+      min = min < matrix[row][col] ? min : (min = matrix[row][col]);
+    }
+    luckyNums.push(min);
+  }
+
+  for (let col = 0; col < luckyCol; col++){
     let max = 0;
 
-    for (let row = 0; row < longRow; row++) {
-      console.log(matrix[row][col]);
-      // console.log(subMatrix[col]=longRow)
-
-
-      min = min < matrix[col] ? min : (min = matrix[col]);
-      max = matrix[row][col] > max ? (max = matrix[row][col]) : max;
+    for (let row = 0; row < luckyRow; row++) {
+      max = matrix[row][col] > max ? max = matrix[row][col] : max;
     }
-    console.log(min);
-    console.log(max);
-    // luckyNums.push(min, max);
-    // luckyMatrix = luckyNums.filter((num, index, array) => {
-    //   return array.indexOf(num) !== index
-    // })
+    luckyNums.push(max);
   }
+
+  luckyMatrix = luckyNums.filter((val, i, arr) => {
+    return arr.indexOf(val) !== i;
+  });
+
   return luckyMatrix;
-};
+}
 
 let matrix2 = [
   [5, 10, 8, 6],
@@ -324,10 +334,10 @@ let matrix2 = [
 
 console.log(luckyNumbers(matrix2)); // [10]
 
-// let matrix1 = [
-//   [5, 9, 21],
-//   [9, 19, 6],
-//   [12, 14, 15]
-// ];
+let matrix1 = [
+  [5, 9, 21],
+  [9, 19, 6],
+  [12, 14, 15]
+];
 
-// console.log(luckyNumbers(matrix1)); // [12]
+console.log(luckyNumbers(matrix1)); // [12]
